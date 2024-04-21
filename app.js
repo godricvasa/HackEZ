@@ -10,11 +10,6 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-// Connect to MongoDB Atlas
-// godricvasa
-// GJFkAxud3iVuFBRa
-//
-
 const uri = process.env.DB;
 
 mongoose.connect(uri, {
