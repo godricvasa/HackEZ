@@ -27,7 +27,7 @@ const qaSchema = new mongoose.Schema({
     question: String,
     answers: [{ type: String }]
 });
-
+ 
 const QAColl = mongoose.model("QAColl", qaSchema);
 
 // Route to display list of questions (homepage)
