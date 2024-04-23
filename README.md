@@ -1,2 +1,2 @@
 Deployed website 👇
-hackez.onrender.com
+https://hackez.onrender.com/
