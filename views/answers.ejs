@@ -1,6 +1,7 @@
 <%-include("header.ejs") %>
    <!-- Comment form -->
-<form action="questions/<%= question._id %>/answer" method="post" class="mt-5">
+<form action="/questions/<%= question._id %>/answer" method="post" class="mt-5">
+
     <div class="mb-3 glass ml">
         <h2>Your answer!</h2>
         <textarea class="form-control" id="answer" name="answer" rows="3"></textarea>
