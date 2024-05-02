@@ -11,11 +11,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 const uri = process.env.DB;
-
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-});
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch(err => console.error('Failed to connect to MongoDB:', err));
 
 // Mongoose Schema for Questions and Answers
 const qaSchema = new mongoose.Schema({
