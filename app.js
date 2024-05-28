@@ -28,15 +28,21 @@ const QAColl = mongoose.model("QAColl", qaSchema);
 
 // Route to display list of questions (homepage)
 app.get("/", async function (req, res) {
-    const questions = await QAColl.find();
-    res.render("questions", { questions: questions });
+    const page = req.query.page?parseInt(req.query.page):1;
+    const perpage = 10;
+    const skip = (page - 1)*perpage;
+    const questions = await QAColl.find().skip(skip).limit(perpage);
+    const totalRecord = await QAColl.countDocuments();
+    const totalPages = Math.ceil(totalRecord/perpage)
+    res.render("questions", { questions: questions,totalPages,currentPage:page });
 });
 
 // Route to display individual question page
 app.get("/questions/:id", async function (req, res) {
     const questionId = req.params.id;
     const question = await QAColl.findById(questionId);
-    res.render("answers", { question: question });
+ const limitedAnswers = question.answers.slice(0,6);
+    res.render("answers", { question: question,answers:limitedAnswers });
 });
 
 
